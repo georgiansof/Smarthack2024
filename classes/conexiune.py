@@ -1,16 +1,27 @@
-# Python program showing
-# abstract base class work
-from abc import ABC, abstractmethod
+from enum import Enum
 
-class Conexiune(ABC):
-    # capacitate
-    capacitate = 0.0
-    #distanta
-    distanta = 0.0
-    # timp_transfer
-    timp_transf = 0.0
-    # const transfer/distanta
-    cost_transf_dist = 0.0
-    # emisii co2/distanta
-    co2_dist = 0.0
+class ConnectionType(Enum):
+    UNKNOWN = 0
+    PIPE = 1
+    TRUCK = 2
+
+class Connection():
+    def __init__(
+        self, _id, _from_id,_distance,
+        _lead_time_days, _max_capacity, _connection_type
+        ):
+        
+        self.id = 0
+        self.from_id = 0
+        self.distance = 0.0
+        self.lead_time_days = 0
+        self.max_capacity = 0.0
+        self.connection_type = ConnectionType.UNKNOWN
+        
+    def __str__(self):
+        return (f"Connection(id={self.id}, from_id={self.from_id},
+                distance={self.distance}, lead_time_days={self.lead_time_days},
+                capacity={self.max_capacity}, connection_type={self.connection_type})" 
+        )
+        
     
