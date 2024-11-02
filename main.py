@@ -66,6 +66,7 @@ for connection in connections:
 #     print(demand)
 
 import requests
+import json
 
 start_api = 'http://localhost:8080/api/v1/session/start'
 api_base_args = {'API-KEY': '7bcd6334-bc2e-4cbf-b9d4-61cb9e868869'}
@@ -90,10 +91,15 @@ api_body['movements'].append({
 
 api_play_call = requests.post(play_api, headers = api_args, json = api_body)
 
-print(api_play_call.content)
+play_output = json.loads(api_play_call.content.decode('utf-8'))
+print(json.dumps(play_output, indent=4))
+# print(api_play_call.content)
 
 end_api = 'http://localhost:8080/api/v1/session/end'
 
 api_end_call = requests.post(end_api, headers = api_base_args)
+
+end_output = json.loads(api_end_call.content.decode('utf-8'))
+print(json.dumps(end_output, indent=4))
 
 print(api_end_call.content)
