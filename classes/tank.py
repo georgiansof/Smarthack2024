@@ -26,7 +26,7 @@ class Tank:
                 f"capacity={self.capacity}, max_input={self.max_input}, "
                 f"max_output={self.max_output}, overflow_penalty={self.overflow_penalty}, "
                 f"underflow_penalty={self.underflow_penalty}, over_input_penalty={self.over_input_penalty}, "
-                f"over_output_penalty={self.over_output_penalty}, initial_stock={self.initial_stock})" 
+                f"over_output_penalty={self.over_output_penalty}, initial_stock={self.stock})" 
         )
     
     def checkOutput(self, val):
