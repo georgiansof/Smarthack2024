@@ -11,9 +11,9 @@ class Connection():
         self.id = _id
         self.from_id = _from_id
         self.to_id = _to_id
-        self.distance = _distance
-        self.lead_time_days = _lead_time_days
-        self.max_capacity = _max_capacity
+        self.distance = int(_distance)
+        self.lead_time_days = int(_lead_time_days)
+        self.max_capacity = int(_max_capacity)
         self.connection_type = _connection_type
         if(self.connection_type == "PIPELINE"):
             self.cost_index = 0.05

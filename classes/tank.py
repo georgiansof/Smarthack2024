@@ -9,16 +9,16 @@ class Tank:
         self.id = _id
         self.name = _name
         # Capacitate stocare
-        self.capacity = _capacity
+        self.capacity = int(_capacity)
         # Volum zilnic maxim de intrare
-        self.max_input = _max_input
+        self.max_input = int(_max_input)
         # Volum zilnic maxim de iesire
-        self.max_output = _max_output
+        self.max_output = int(_max_output)
         self.overflow_penalty = _overflow_penalty
         self.underflow_penalty = _underflow_penalty
         self.over_input_penalty = _over_input_penalty
         self.over_output_penalty = _over_output_penalty
-        self.stock = _initial_stock
+        self.stock = int(_initial_stock)
         self.type = "TANK"
         
     def __str__(self):
