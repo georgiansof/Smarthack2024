@@ -96,6 +96,7 @@ active_demands = []
 
 
 
+
 for day in range(0, 43):
     api_body = {}
     api_body['day'] = day
