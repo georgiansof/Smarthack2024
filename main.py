@@ -1,16 +1,16 @@
-# This is a sample Python script.
+from utils.csv_parser import csvparser
+from classes.refinery import Refinery
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+refineries_csv = "./data/refineries.csv"
 
+fields, rows = csvparser(refineries_csv)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+refineries = []
 
+for row in rows:
+    refineries.append(Refinery(*row[:-1]))
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+for refinery in refineries:
+    print(refinery)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Repeat for each class. Don't forget to add __str__(self) for remaining classes. (Adrifot, 15:05)
