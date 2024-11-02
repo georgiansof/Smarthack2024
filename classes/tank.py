@@ -21,10 +21,10 @@ class Tank:
         self.initial_stock = _initial_stock
         
     def __str__(self):
-        return (f"Tank(id={self.id}, name='{self.name}',
-                capacity={self.capacity}, max_input={self.max_input},
-                max_output={self.max_output}, overflow_penalty={self.overflow_penalty},
-                underflow_penalty={self.underflow_penalty}, over_input_penalty={self.over_input_penalty},
-                over_output_penalty={self.over_output_penalty}, initial_stock={self.initial_stock})" 
+        return (f"Tank(id={self.id}, name='{self.name}', "
+                f"capacity={self.capacity}, max_input={self.max_input}, "
+                f"max_output={self.max_output}, overflow_penalty={self.overflow_penalty}, "
+                f"underflow_penalty={self.underflow_penalty}, over_input_penalty={self.over_input_penalty}, "
+                f"over_output_penalty={self.over_output_penalty}, initial_stock={self.initial_stock})" 
         )
         
