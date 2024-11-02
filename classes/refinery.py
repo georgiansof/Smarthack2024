@@ -22,6 +22,16 @@ class Refinery:
             f"over_output_penalty={self.over_output_penalty}, "
             f"production_cost={self.production_cost}, "
             f"production_co2={self.production_co2}, "
+<<<<<<< Updated upstream
             f"initial_stock={self.initial_stock})\n\n")
+=======
+            f"initial_stock={self.stock})\n\n")
+    
+    def checkFuel(self, val):
+        return int(val) < int(self.stock)
+    
+    def checkOutCap(self, val):
+        return int(val) < int(self.max_output)
+>>>>>>> Stashed changes
         
     
