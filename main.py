@@ -53,14 +53,47 @@ for row in rows:
 for connection in connections:
     print(connection)
     
-# Demands
-demands = []
+# # Demands
+# demands = []
 
-demands_csv = "./data/demands.csv"
-fields, rows = csvparser(demands_csv)
+# demands_csv = "./data/demands.csv"
+# fields, rows = csvparser(demands_csv)
 
-for row in rows:
-    demands.append(Demand(*row))
+# for row in rows:
+#     demands.append(Demand(*row))
 
-for demand in demands:
-    print(demand)
+# for demand in demands:
+#     print(demand)
+
+import requests
+
+start_api = 'http://localhost:8080/api/v1/session/start'
+api_base_args = {'API-KEY': '7bcd6334-bc2e-4cbf-b9d4-61cb9e868869'}
+
+api_args = api_base_args
+api_call = requests.post(start_api, headers = api_args)
+
+session_id = api_call.content
+
+print(session_id)
+
+api_args['SESSION-ID'] = session_id
+
+play_api = 'http://localhost:8080/api/v1/play/round'
+api_body = {}
+api_body['day'] = 0
+api_body['movements'] = []
+api_body['movements'].append({
+    'connectionId': '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+    'amount': 0
+})
+
+api_play_call = requests.post(play_api, headers = api_args, json = api_body)
+
+print(api_play_call.content)
+
+end_api = 'http://localhost:8080/api/v1/session/end'
+
+api_end_call = requests.post(end_api, headers = api_base_args)
+
+print(api_end_call.content)
