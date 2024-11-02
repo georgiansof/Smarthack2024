@@ -41,7 +41,7 @@ for day in range(0, 42):
 
             if best_option:
                 chosen_connection, chosen_tank = best_option
-                print(f"Day {day}: Chosen connection: {connection.id}. Quantity transferred: {demand_quantity}")
+                print(f"Day {day}: Chosen connection: {chosen_connection.id}. Quantity transferred: {demand_quantity}")
                 chosen_tank.stock = int(chosen_tank.stock)
                 chosen_tank.stock -= int(demand_quantity)
                 active_demands.remove(curr_demand)
@@ -66,7 +66,7 @@ for day in range(0, 42):
                                         best_option = (connection, tank)
                 if best_option:
                     chosen_connection, chosen_refinery = best_option
-                    print(f"Day {day}: Chosen connection: {connection.id}. Quantity transferred: {demand_quantity}")
+                    print(f"Day {day}: Chosen connection: {chosen_connection.id}. Quantity transferred: {demand_quantity}")
                     chosen_refinery.stock -= demand_quantity
                     if(chosen_refinery.stock < 0):
                         print("BRUH A REFINERY HAS GONE NEGATIVE")
