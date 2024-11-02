@@ -1,8 +1,11 @@
-# Python program showing
-# abstract base class work
-from abc import ABC, abstractmethod
+from enum import Enum
 
-class Connection(ABC):
+class ConnectionType(Enum):
+    UNKNOWN = 0
+    PIPE = 1
+    TRUCK = 2
+
+class Connection():
     def __init__(self):
         self.id = 0
         self.from_id = 0
@@ -10,4 +13,6 @@ class Connection(ABC):
         self.distance = 0.0
         self.lead_time_days = 0
         self.max_capacity = 0.0
+        self.connection_type = ConnectionType.UNKNOWN
+        
         
