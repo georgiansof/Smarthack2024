@@ -81,19 +81,23 @@ print(session_id)
 api_args['SESSION-ID'] = session_id
 
 play_api = 'http://localhost:8080/api/v1/play/round'
-api_body = {}
-api_body['day'] = 0
-api_body['movements'] = []
-api_body['movements'].append({
-    'connectionId': '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-    'amount': 0
-})
 
-api_play_call = requests.post(play_api, headers = api_args, json = api_body)
 
-play_output = json.loads(api_play_call.content.decode('utf-8'))
-print(json.dumps(play_output, indent=4))
-# print(api_play_call.content)
+for day in range(0, 43):
+    api_body = {}
+    api_body['day'] = day
+    api_body['movements'] = []
+    api_body['movements'].append({
+        'connectionId': '79a7eaac-482a-4cd6-a5ee-596165f47f01',
+        'amount': 0
+    })
+    api_play_call = requests.post(play_api, headers = api_args, json = api_body)
+    play_output = json.loads(api_play_call.content.decode('utf-8'))
+    print(json.dumps(play_output, indent=4))
+    # print(api_play_call.content)
+
+
+print("-------------------")
 
 end_api = 'http://localhost:8080/api/v1/session/end'
 
@@ -102,4 +106,4 @@ api_end_call = requests.post(end_api, headers = api_base_args)
 end_output = json.loads(api_end_call.content.decode('utf-8'))
 print(json.dumps(end_output, indent=4))
 
-print(api_end_call.content)
+# print(api_end_call.content)
