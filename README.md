@@ -1,3 +1,1 @@
-# Test 
-
-# Test 2
+# SmartHack 2024 - SilyCars:3 🐱
