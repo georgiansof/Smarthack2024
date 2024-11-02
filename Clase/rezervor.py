@@ -1,9 +1,10 @@
-class Rezervor:
+class Tank:
     def __init__(self):
+        self.id = 0
         # Capacitate stocare
-        self.capacitate_stoc = 0.0
+        self.capacity = 0.0
         # Volum zilnic maxim de iesire
-        self.vol_out = 0.0
+        self.max_output = 0.0
         # Volum zilnic maxim de intrare
         self.vol_in = 0.0
         # Stoc initial
