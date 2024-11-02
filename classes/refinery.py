@@ -1,7 +1,7 @@
 class Refinery:
-    def __init__(self, _id, _name, _capacity, _max_output, _production,
-                _overflow_penalty, _underflow_penalty, _over_output_penalty, 
-                _production_cost, _production_co2, _initial_stock):
+    def __init__(self, _id=0, _name="", _capacity=0, _max_output=0, _production=0,
+                _overflow_penalty=0, _underflow_penalty=0, _over_output_penalty=0, 
+                _production_cost=0.0, _production_co2=0.0, _initial_stock=0):
         self.id = _id
         self.name = _name
         self.capacity = _capacity

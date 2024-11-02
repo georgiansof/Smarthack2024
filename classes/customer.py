@@ -1,5 +1,5 @@
 class Customer:
-    def __init__(self, _id, _name, _max_input, _over_input_penalty, _late_delivery_penalty, _early_delivery_penalty):
+    def __init__(self, _id=0, _name="", _max_input=0, _over_input_penalty=0, _late_delivery_penalty=0, _early_delivery_penalty=0):
         self.id = _id
         self.name = _name
         self.max_input = _max_input

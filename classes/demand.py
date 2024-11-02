@@ -1,7 +1,7 @@
 # id;customer_id;quantity;post_day;start_delivery_day;end_delivery_day
 
 class Demand:
-    def __init__(self, _id, _customer_id, _quantity, _post_day, _start_delivery_day, _end_delivery_day):
+    def __init__(self, _id=0, _customer_id=0, _quantity=0, _post_day=0, _start_delivery_day=0, _end_delivery_day=0):
         self.id = _id
         self.customer_id = _customer_id
         self.quantity = _quantity
