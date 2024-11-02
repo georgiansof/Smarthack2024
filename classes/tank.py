@@ -18,7 +18,8 @@ class Tank:
         self.underflow_penalty = _underflow_penalty
         self.over_input_penalty = _over_input_penalty
         self.over_output_penalty = _over_output_penalty
-        self.initial_stock = _initial_stock
+        self.stock = _initial_stock
+        self.type = "TANK"
         
     def __str__(self):
         return (f"Tank(id={self.id}, name='{self.name}', "
@@ -27,4 +28,10 @@ class Tank:
                 f"underflow_penalty={self.underflow_penalty}, over_input_penalty={self.over_input_penalty}, "
                 f"over_output_penalty={self.over_output_penalty}, initial_stock={self.initial_stock})" 
         )
+    
+    def checkOutput(self, val):
+        return val < self.max_output
+    
+    def checkFuel(self, val):
+        return val < self.stock
         

@@ -12,7 +12,8 @@ class Refinery:
         self.over_output_penalty = _over_output_penalty
         self.production_cost = _production_cost
         self.production_co2 = _production_co2
-        self.initial_stock = _initial_stock
+        self.stock = _initial_stock
+        self.type = "REFINERY"
 
     def __str__(self):
         return (f"Refinery(id={self.id}, name='{self.name}', capacity={self.capacity}, "
