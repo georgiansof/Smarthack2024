@@ -25,21 +25,34 @@ output_file = "play_output.json"
 if os.path.exists(output_file):
     os.remove(output_file)
 
-refineries, customers, tanks, connections, demands = initObjAPI()
+refineries, customers, tanks, connections = initObjAPI()
 
-# sort demands by urgency
-active_demands = sorted(
-    demands,
-    key=lambda d: d.start_delivery_day
-)
+api_body = {}
+api_body['day'] = 0
+api_body['movements'] = []
 
-# remove unneeded demand.id
-for demand in active_demands:
-    if hasattr(demand, 'id'):
-        del demand.id
+for refinery in refineries:
+    refinery.produce()
+
+api_play_call = requests.post(play_api, headers = api_args, json = api_body)
+play_output = json.loads(api_play_call.content.decode('utf-8'))
+
+# create an output file
+if os.path.exists(output_file):
+    with open(output_file, "r") as file:
+        data = json.load(file)
+else:
+    data = []
+    
+# write to file
+data.append(play_output)
+with open(output_file, "w") as file:
+    json.dump(data, file, indent=4)
+
+active_demands = []
 
 # main loop - iterate through the 42 days
-for day in range(0, 43):
+for day in range(1, 43):
     api_body = {}
     api_body['day'] = day
     api_body['movements'] = []

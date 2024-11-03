@@ -2,7 +2,6 @@ from utils.csv_parser import csvparser
 from classes.refinery import Refinery
 from classes.customer import Customer
 from classes.tank import Tank
-from classes.demand import Demand
 from classes.connection import Connection
 
 
@@ -94,15 +93,5 @@ def initObjAPI():
 
     for row in rows:
         connections.append(Connection(*row))
-        
-    # Demands
-    demands = []
 
-    demands_csv = "./data/demands.csv"
-    fields, rows = csvparser(demands_csv)
-
-    for row in rows:
-        if(int(row[3]) == 0):
-            demands.append(Demand(*row))
-
-    return refineries, customers, tanks, connections, demands
+    return refineries, customers, tanks, connections
