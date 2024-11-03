@@ -1,19 +1,33 @@
 import requests
+import csv
+
+api_base_args = {'API-KEY': '7bcd6334-bc2e-4cbf-b9d4-61cb9e868869'} #TODO de schimbat
+start_api = 'http://localhost:8080/api/v1/session/start' #TODO de schimbat IP / port
+play_api = 'http://localhost:8080/api/v1/play/round' #TODO de schimbat IP / port
+end_api = 'http://localhost:8080/api/v1/session/end' #TODO de schimbat IP / port
+
+
+def csvparser(filename):
+    fields = []
+    rows = []
+    with open(filename, "r") as csvfile:
+        csvreader = csv.reader(csvfile, delimiter=";")
+        fields = next(csvreader)
+        for row in csvreader:
+            rows.append(row)
+            return fields, rows # I only need one valid connectionId
+    return fields, rows
+
+
+connections_csv = "../data/connections.csv"
+fields, rows = csvparser(connections_csv)
+
+connId = rows[0][0]
 
 movement = {
-    "connectionId" : "79a7eaac-482a-4cd6-a5ee-596165f47f01",
+    "connectionId" : connId,
     "amount" : -9223372036854775786
 }
-
-api_base_args = {'API-KEY': '7bcd6334-bc2e-4cbf-b9d4-61cb9e868869'}
-start_api = 'http://localhost:8080/api/v1/session/start'
-play_api = 'http://localhost:8080/api/v1/play/round'
-end_api = 'http://localhost:8080/api/v1/session/end'
-
-# Helpe
-# Process server response for demand and penalties
-
-
 
 def process_server_response(response):
     response_data = response.json()
