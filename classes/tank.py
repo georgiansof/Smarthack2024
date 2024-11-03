@@ -18,12 +18,9 @@ class Tank:
         self.underflow_penalty = _underflow_penalty
         self.over_input_penalty = _over_input_penalty
         self.over_output_penalty = _over_output_penalty
-<<<<<<< Updated upstream
         self.stock = int(_initial_stock)
         self.type = "TANK"
-=======
-        self.stock = _initial_stock
->>>>>>> Stashed changes
+        self.visited = False
         
     def __str__(self):
         return (f"Tank(id={self.id}, name='{self.name}', "
@@ -34,8 +31,11 @@ class Tank:
         )
     
     def checkOutput(self, val):
-        return val < self.max_output
+        return val <= self.max_output
+    
+    def checkInput(self, val):
+        return val <= self.max_input
     
     def checkFuel(self, val):
-        return val < self.stock
+        return val <= self.stock
         

@@ -26,10 +26,10 @@ class Refinery:
             f"initial_stock={self.stock})\n\n")
     
     def checkFuel(self, val):
-        return int(val) < int(self.stock)
+        return int(val) <= int(self.stock)
     
-    def checkOutCap(self, val):
-        return int(val) < int(self.max_output)
+    def checkOutput(self, val):
+        return int(val) <= int(self.max_output)
         
     def produce(self):
         self.stock += self.production

@@ -23,6 +23,7 @@ class Connection():
             self.cost_index = 0.42
             self.co2_index = 0.31
             self.penalty_index = 0.73
+        self.priority = 0.0
         
     def __str__(self):
         return (f"Connection(id={self.id}, from_id={self.from_id}, "
@@ -31,6 +32,6 @@ class Connection():
         )
     
     def checkCap(self, quantity):
-        return quantity < self.max_capacity
+        return quantity <= self.max_capacity
         
     
