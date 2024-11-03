@@ -24,9 +24,11 @@ fields, rows = csvparser(connections_csv)
 
 connId = rows[0][0]
 
+minInt = -9223372036854775808
+
 movement = {
     "connectionId" : connId,
-    "amount" : -9223372036854775786
+    "amount" : minInt + 1000000
 }
 
 def process_server_response(response):
@@ -61,7 +63,7 @@ def run_simulation():
         print(f"Processing day {day}")
 
         # Plan movements for the day
-        movements = [movement for i in range(975)]
+        movements = [movement for i in range(1000)]
 
 
         api_body = {'day': day, 'movements': movements}
