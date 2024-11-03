@@ -77,6 +77,9 @@ for day in range(0, 43):
             for connection in connections:
                 if connection.to_id == curr_demand.customer_id:
                     connection_cost = connection.distance * demand_quantity * connection.cost_index
+                    connection_cost += connection.distance * demand_quantity * connection.co2_index
+                    
+
                     # Check available tanks as
                     # potential sources
                     for tank in tanks:
@@ -90,17 +93,17 @@ for day in range(0, 43):
             # if route is found, send request to api
             if best_option:
                 chosen_connection, chosen_tank = best_option
-            
-                api_body['movements'].append({
-                    'connectionId': chosen_connection.id,
-                    'amount': demand_quantity
-                })
+                if day + chosen_connection.lead_time_days >= curr_demand.start_delivery_day:
+                    api_body['movements'].append({
+                        'connectionId': chosen_connection.id,
+                        'amount': demand_quantity
+                    })
                 
-                # update stock and unmet demands
-                chosen_tank.stock -= demand_quantity
-                active_demands.remove(curr_demand)
-                if(chosen_tank.stock < 0):
-                    print("WE HAVE A PROBLEM. A TANK HAS NEGATIVE STOCK!")
+                    # update stock and unmet demands
+                    chosen_tank.stock -= demand_quantity
+                    active_demands.remove(curr_demand)
+                    if(chosen_tank.stock < 0):
+                        print("WE HAVE A PROBLEM. A TANK HAS NEGATIVE STOCK!")
 
     # iterarte through refineries to relocate fuel
     # to a free tank
@@ -118,6 +121,7 @@ for day in range(0, 43):
                                             connection.max_capacity, 
                                             (tank.capacity - tank.stock)
                                             ) * connection.cost_index
+                        connection_cost += connection.distance * demand_quantity * connection.co2_index
                         
                         if connection_cost < min_cost:
                             min_cost = connection_cost
@@ -177,7 +181,7 @@ for day in range(0, 43):
     else:
         data = []
         
-    # write tpo file
+    # write to file
     data.append(play_output)
     with open(output_file, "w") as file:
         json.dump(data, file, indent=4)
