@@ -31,9 +31,9 @@ refineries, customers, tanks, connections, demands = initObjAPI()
 
 active_demands = sorted(demands, key=lambda d: d.start_delivery_day)
 
-# for demand in active_demands:
-#     if hasattr(demand, 'id'):
-#         del demand.id
+for demand in active_demands:
+    if hasattr(demand, 'id'):
+        del demand.id
 
 for day in range(0, 43):
     api_body = {}
@@ -165,11 +165,11 @@ print("-------------------")
 print("Number of items in active_demands:", len(active_demands))
 print("-------------------")
 
-end_api = 'http://localhost:8080/api/v1/session/end'
+# end_api = 'http://localhost:8080/api/v1/session/end'
 
-api_end_call = requests.post(end_api, headers = api_base_args)
+# api_end_call = requests.post(end_api, headers = api_base_args)
 
-end_output = json.loads(api_end_call.content.decode('utf-8'))
-print(json.dumps(end_output, indent=4))
+# end_output = json.loads(api_end_call.content.decode('utf-8'))
+# print(json.dumps(end_output, indent=4))
 
 # print(api_end_call.content)
