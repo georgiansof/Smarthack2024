@@ -346,7 +346,7 @@ for day in range(0, 43):
                             # min_co2 = connection_co2
                             best_option2 = connection, tank, refinery
               
-        if best_option2: 
+        if best_option2: # here is clearly a problem. on day 5 only 2 pieces are assigned insteaf of 3. However, on line 99 i make sure that there are 3 pieces, no?
             chosen_connection, chosen_tank, chosen_refinery = best_option2
             transferred_quantity = min(chosen_connection.max_capacity, (tank.capacity - tank.stock))
             chosen_refinery.stock -= transferred_quantity
