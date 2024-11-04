@@ -21,3 +21,7 @@
 5. **API Play Calls and Result Logging**:
    - Each day, an API request is made to submit the day’s transactions (`play_api`).
    - Responses are logged in `play_output.json` to keep a record of each round.
+
+## Separate 'solution': Hacking the API
+- underflow variable `amount` in API call by putting a value from range [\MIN_INT_64; MIN_INT_64 / 100 + 1\].
+- This makes penalty calculation result in negative penalties, because server processes `amount` as a variable of type `long` in java, so it wraps around at underflow.
