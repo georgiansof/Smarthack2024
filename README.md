@@ -1,5 +1,7 @@
 # SmartHack 2024 - SilyCars:3 🐱
 
+Statement: [https://github.com/georgiansof/Smarthack2024-Statement-fork]
+
 ## Components and workflow
 1. **CSV Parsing and Object Initialization**:
    - The code starts by loading data from CSV files into lists of objects (`Refinery`, `Customer`, `Tank`, `Connection`, and `Demand`).
